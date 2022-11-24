@@ -1,0 +1,37 @@
+.content-tabs {
+	flex-grow: 1;
+}
+.bloc-tabs {
+	background-color: $secondColor;
+	border-radius: $borderRadius;
+}
+.tabs {
+	background-color: $secondColor;
+	color: $whiteColor;
+	font-weight: semibold;
+	font-size: 0.875rem;
+	text-transform: uppercase;
+	border: none;
+	border-radius: $borderRadius;
+	padding: 0.8rem;
+	cursor: pointer;
+}
+.active-tabs {
+	background-color: $primaryAltColor;
+}
+.content {
+	padding: 20px;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+.content h2 {
+	padding: 0px 0 5px 0px;
+}
+.content p {
+	width: 100%;
+	height: 100%;
+}
+.active-content {
+	display: block;
+}

@@ -1,0 +1,98 @@
+.c-button {
+	display: inline-block;
+	color: $whiteColor;
+	background-color: transparent;
+	padding: 0.5rem 1rem;
+	font-size: 0.938rem;
+	font-weight: semibold;
+	cursor: pointer;
+	text-decoration: none;
+	line-height: inherit;
+	border-radius: 0.25rem;
+	transition: transform 0.05s;
+	border: 1px solid var(--color);
+	user-select: none;
+	text-align: center;
+
+	&:hover {
+		text-decoration: inherit;
+	}
+
+	&:active {
+		transform: scale(0.99);
+	}
+}
+
+.c-button-primary {
+	background-color: $darkColor;
+	border: 1px solid $darkColor;
+	color: $whiteColor;
+
+	&:hover {
+		background-color: $darkAltColor;
+		text-decoration: inherit;
+	}
+}
+
+.c-button-danger {
+	background-color: $red400Color;
+	border: 1px solid $red500Color;
+	color: $whiteColor;
+
+	&:hover {
+		background-color: $red500Color;
+		text-decoration: inherit;
+	}
+}
+
+.c-button-primary-alt {
+	background-color: $blue600Color;
+	border: 1px solid $blue600Color;
+	transition: all 0.3s ease-in-out;
+
+	&:hover {
+		background-color: $blue600Color;
+		filter: brightness(0.9);
+		text-decoration: inherit;
+	}
+}
+
+.c-button-primary-ghost {
+	border: 1px solid $blue600Color;
+	transition: all 0.3s ease-in-out;
+
+	&:hover {
+		background-color: rgba($color: $blue600Color, $alpha: 0.2);
+		text-decoration: inherit;
+	}
+}
+
+.c-button-danger-ghost {
+	background-color: rgba($color: $red500Color, $alpha: 0.3);
+	border: 1px solid $red500Color;
+
+	&:hover {
+		background-color: $red500Color;
+		filter: brightness(0.9);
+		text-decoration: inherit;
+	}
+}
+
+.c-button-full {
+	margin-right: 0;
+	margin-left: 0;
+	width: 100%;
+}
+
+.c-button-link {
+	background-color: transparent;
+	border: 0;
+	color: $blue400Color;
+	text-decoration: none;
+	font-size: 1rem;
+	padding: 0.25rem !important;
+}
+
+.c-button-link:hover {
+	text-decoration: underline;
+}

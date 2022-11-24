@@ -1,0 +1,174 @@
+/*Import font Open Sans and Lato*/
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Open+Sans:wght@500;700&display=swap");
+
+/* General */
+$fontSize: 0.95rem;
+$bodyBgColor: #192229;
+$textColor: #232323;
+$borderRadius: 3px;
+$dividerColor: #e3e3e3;
+$transitionDuration: 0.2s;
+$maskBgColor: #424242;
+$focusShadowColor: #8dcdff;
+
+// Primary colors
+$primaryColor: #212e36;
+$primaryAltColor: #192229;
+$secondColor: #2a3b47;
+$thirdColor: #7eb0cf;
+$darkColor: #282d31;
+$darkAltColor: #141618;
+$linkColor: #2196f3;
+
+// Neutral
+$whiteColor: #edeef0;
+$blackColor: #111;
+
+// Colors
+$gray100Color: #e3e6e8;
+$gray200Color: #c7cdd1;
+$gray300Color: #abb4ba;
+$gray400Color: #8f9ba3;
+$gray500Color: #73828c;
+$gray600Color: #5c6870;
+$gray700Color: #454e54;
+$gray800Color: #2e3438;
+$gray900Color: #171a1c;
+
+$red100Color: #fbd5dc;
+$red200Color: #f6acb9;
+$red300Color: #f28799;
+$red400Color: #ed5e76;
+$red500Color: #e93553;
+$red600Color: #cf1736;
+$red700Color: #9c1128;
+$red800Color: #3c060f;
+$red900Color: #200308;
+
+$yellow100Color: #fff6e6;
+$yellow200Color: #ffeac7;
+$yellow300Color: #ffdb9e;
+$yellow400Color: #ffce7a;
+$yellow500Color: #ffba42;
+$yellow600Color: #e5a638;
+$yellow700Color: #b4822d;
+$yellow800Color: #3d2c0f;
+$yellow900Color: #332000;
+
+$green100Color: #a6d9a6;
+$green200Color: #90cf90;
+$green300Color: #7ac57a;
+$green400Color: #63bc63;
+$green500Color: #4db24d;
+$green600Color: #439c43;
+$green700Color: #3a863a;
+$green800Color: #306f30;
+$green900Color: #265926;
+
+$blue100Color: #a3d4f5;
+$blue200Color: #8cc9f3;
+$blue300Color: #75bff0;
+$blue400Color: #62b7f4;
+$blue500Color: #47a9eb;
+$blue600Color: #2599e7;
+$blue700Color: #1685cf;
+$blue800Color: #136fad;
+$blue900Color: #0f598a;
+
+// Typography
+$fontFamilyHeading: "Open Sans", sans-serif;
+$fontFamilyText: "Manrope", sans-serif;
+$fontSmallSize: 0.875rem;
+$fontBiggerSize: 1.25rem;
+
+/* Menu Common */
+$menuitemBadgeBgColor: #007be5;
+$menuitemBadgeColor: #ffffff;
+$submenuFontSize: 0.813rem;
+$menuitemActiveRouteColor: #4d86cf;
+
+/* Menu Light */
+$menuBgColorFirst: #f3f4f9;
+$menuBgColorLast: #d7dbe8;
+$menuitemColor: #232428;
+$menuitemHoverColor: #0a3861;
+$menuitemActiveColor: #1c5ca2;
+$menuitemActiveBgColor: #ffffff;
+$menuitemBorderColor: rgba(207, 211, 224, 0.6);
+
+/* Menu Dark */
+$menuDarkBgColorFirst: #212e36;
+$menuDarkBgColorLast: #192229;
+$menuitemDarkColor: #ffffff;
+$menuitemDarkHoverColor: #82a4d0;
+$menuitemDarkActiveColor: #82a4d0;
+$menuitemDarkActiveBgColor: #212e36;
+$menuitemDarkBorderColor: rgba(52, 56, 65, 0.6);
+
+/* Topbar */
+$topbarLeftBgColor: #212e36;
+$topbarRightBgColor: #212e33;
+$topbarItemBadgeBgColor: #ef6262;
+$topbarItemBadgeColor: #ffffff;
+$topbarItemColor: #ffffff;
+$topbarItemHoverColor: #c3e8fb;
+$topbarSearchInputBorderBottomColor: #ffffff;
+$topbarSearchInputColor: #ffffff;
+
+/* Footer */
+$footerBgColor: #212e36;
+$footerTextColor: #ffffff;
+
+// animation: soda 5s linear infinite;
+@keyframes rotate {
+	0%,
+	100% {
+		transform: rotate(270deg);
+	}
+	25%,
+	75% {
+		transform: rotate(360deg);
+	}
+	50% {
+		transform: rotate(0deg);
+	}
+}
+// animation: spin 1s linear infinite;
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+// animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+@keyframes ping {
+	75%,
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+// animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+}
+// animation: bounce 1s infinite;
+@keyframes bounce {
+	0%,
+	100% {
+		transform: translateY(-25%);
+		animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+	}
+	50% {
+		transform: translateY(0);
+		animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	}
+}

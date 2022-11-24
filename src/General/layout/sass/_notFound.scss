@@ -1,0 +1,17 @@
+.NotFound {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: $whiteColor;
+}
+.container-notfound {
+	width: 100%;
+	max-width: 1200px;
+	padding: 0 15px;
+
+	&button {
+		background-color: transparent;
+	}
+}

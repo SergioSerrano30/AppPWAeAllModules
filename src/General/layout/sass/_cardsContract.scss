@@ -1,0 +1,36 @@
+.card-contracts {
+	background-color: $whiteColor;
+	color: $darkColor;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	border-radius: $borderRadius;
+	min-height: 22rem;
+
+	&.card-w-title {
+		padding-bottom: 2rem;
+	}
+
+	.title {
+		color: $gray900Color;
+	}
+
+	img {
+		border-radius: $borderRadius;
+		width: 5rem;
+		height: 5rem;
+		filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+		margin-bottom: 1rem;
+	}
+
+	span {
+		color: $gray700Color;
+	}
+}
+
+.contract-detail {
+	display: block;
+}
+
+.text-normal {
+	color: $gray600Color;
+}

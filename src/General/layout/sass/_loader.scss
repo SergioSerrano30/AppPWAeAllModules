@@ -1,0 +1,28 @@
+.loader-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.loader-logo-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 95%;
+	max-width: 40rem;
+}
+.loader-soda {
+	margin: 2rem;
+	width: 90%;
+	max-width: 14rem;
+	color: $red500Color;
+	animation: rotate 5s linear infinite;
+}
+.loader-message {
+	background-color: $secondColor;
+	color: $whiteColor;
+	width: 95%;
+	border-radius: $borderRadius;
+	animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

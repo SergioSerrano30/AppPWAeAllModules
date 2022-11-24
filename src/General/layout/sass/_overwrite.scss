@@ -1,0 +1,291 @@
+.p-component {
+	font-family: $fontFamilyText;
+	font-size: $fontSize;
+}
+.p-datatable .p-datatable-header {
+	background-color: $primaryColor;
+	color: $whiteColor;
+	border: none;
+	padding: 0 0 1rem 0;
+}
+.p-datatable .p-datatable-thead > tr > th {
+	background-color: $secondColor;
+	color: $whiteColor;
+}
+.p-column-title {
+	font-weight: 600;
+	font-size: $fontSmallSize;
+}
+.p-datatable .p-sortable-column:not(.p-highlight):hover {
+	background-color: $primaryAltColor;
+	color: $whiteColor;
+}
+.p-inputtext {
+	background-color: $secondColor;
+	border-color: $gray400Color;
+	color: $whiteColor;
+}
+.p-inputtext:enabled:focus {
+	border-color: $gray100Color;
+}
+.p-inputtext:enabled:hover {
+	border-color: $gray100Color;
+}
+.p-toolbar {
+	background-color: transparent;
+	border: none;
+}
+.p-button {
+	background-color: $blue600Color;
+	border: 1px solid $blue600Color;
+	transition: all 0.3s ease-in-out;
+	filter: brightness(0.9);
+}
+.p-button.p-button-outlined {
+	background-color: transparent;
+	border: 1px solid $blue600Color;
+	color: $blue600Color;
+}
+.p-button.p-button-danger {
+	background-color: $red500Color;
+	border: 1px solid $red500Color;
+	color: $whiteColor;
+}
+.p-button.p-button-danger:enabled:active,
+.p-button.p-button-danger:enabled:hover {
+	background-color: $red600Color;
+	border: 1px solid $red600Color;
+	color: $whiteColor;
+}
+
+.p-button.p-button-danger {
+	background-color: $red500Color;
+	border: 1px solid $red500Color;
+}
+.p-button.p-button-danger.p-button-outlined {
+	transition: all 0.3s;
+	background-color: transparent;
+	border: 1px solid $red500Color;
+	color: $red500Color;
+}
+.p-button.p-button-danger.p-button-outlined:enabled:active,
+.p-button.p-button-danger.p-button-outlined:enabled:hover {
+	color: $red600Color;
+	border: 1px solid $red600Color;
+}
+.p-button.p-button-success {
+	background-color: $green600Color;
+	border: 1px solid $green600Color;
+	color: $whiteColor;
+}
+.p-button.p-button-success:enabled:active,
+.p-button.p-button-success:enabled:hover {
+	color: $whiteColor;
+	background-color: $green700Color;
+	border: 1px solid $green700Color;
+}
+.p-button.p-button-success.p-button-outlined {
+	transition: all 0.3s;
+	background-color: transparent;
+	border: 1px solid $green600Color;
+	color: $green600Color;
+}
+.p-button.p-button-success.p-button-outlined:enabled:active,
+.p-button.p-button-success.p-button-outlined:enabled:hover {
+	color: $green600Color;
+	border: 1px solid $green600Color;
+}
+.p-button.p-button-warning {
+	background-color: $yellow600Color;
+	border: 1px solid $yellow600Color;
+	color: $whiteColor;
+}
+.p-button.p-button-warning:enabled:active,
+.p-button.p-button-warning:enabled:hover {
+	color: $whiteColor;
+	background-color: $yellow700Color;
+	border: 1px solid $yellow700Color;
+}
+.p-button.p-button-warning.p-button-outlined {
+	transition: all 0.3s;
+	background-color: transparent;
+	border: 1px solid $yellow600Color;
+	color: $yellow600Color;
+}
+.p-button.p-button-warning.p-button-outlined:enabled:active,
+.p-button.p-button-warning.p-button-outlined:enabled:hover {
+	color: $yellow600Color;
+	border: 1px solid $yellow600Color;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+	background-color: $secondColor;
+	color: $whiteColor;
+}
+.p-checkbox .p-checkbox-box {
+	background-color: transparent;
+}
+.p-checkbox .p-checkbox-box.p-highlight {
+	background-color: $blue400Color;
+	border-color: $whiteColor;
+}
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
+	background-color: $blue500Color;
+	border-color: $whiteColor;
+}
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+	border-color: $blue200Color;
+}
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+	background-color: $primaryAltColor;
+	color: $whiteColor;
+}
+.p-paginator {
+	background-color: $secondColor;
+	color: $whiteColor;
+}
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+	background-color: $primaryAltColor;
+	color: $whiteColor;
+}
+.p-dialog .p-dialog-header,
+.p-dialog .p-dialog-content,
+.p-dialog .p-dialog-footer {
+	background-color: $primaryAltColor;
+	color: $whiteColor;
+	font-size: $fontSmallSize;
+}
+.p-dialog .p-dialog-content {
+	padding-bottom: 0;
+}
+.p-dropdown,
+.p-dropdown-panel,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+	background-color: $secondColor;
+	color: $whiteColor;
+}
+.p-dropdown:not(.p-disabled):hover {
+	border-color: $whiteColor;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+	background-color: $primaryColor;
+	color: $whiteColor;
+}
+.p-dialog-content .p-field .p-component {
+	margin: 1rem 0 1rem 0;
+}
+.p-dialog-footer .p-button.p-button-text:enabled:hover,
+.p-dialog-footer .p-button.p-button-text:enabled {
+	color: $whiteColor;
+}
+.p-invalid {
+	background-color: $red400Color;
+	padding: 0.3rem;
+	border-radius: $borderRadius;
+	margin: 1rem 0 1rem 0;
+}
+.p-field {
+	margin-top: 1rem;
+}
+.p-dialog .p-dialog-header .p-dialog-header-icon:enabled {
+	background-color: $primaryColor;
+}
+.p-dialog .p-dialog-header .p-dialog-header-icon:enabled:hover {
+	background-color: $primaryColor;
+	color: $whiteColor;
+}
+.p-datatable-tbody {
+	font-size: $fontSmallSize;
+}
+.p-fileupload .p-fileupload-buttonbar,
+.p-fileupload .p-fileupload-content,
+.p-fileupload .p-fileupload-buttonbar {
+	background-color: $primaryAltColor;
+	color: $whiteColor;
+	border: none;
+}
+.p-button-icon-only {
+	padding: 10rem;
+}
+.p-fileupload-buttonbar .p-button:hover,
+.p-fileupload-files .p-button-icon-only:hover {
+	background-color: $primaryColor;
+}
+.p-fileupload-files .p-button-icon-only {
+	border-radius: 1rem;
+	padding: 0.3rem 0.5rem;
+}
+
+.p-dialog-content .p-field .p-component {
+	margin: 0;
+}
+
+.p-grid {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -0.5 rem;
+	margin-left: -0.5 rem;
+	margin-top: -0.5 rem;
+}
+
+.p-dataview .p-dataview-header {
+	background-color: $primaryColor;
+}
+.p-dataview .p-dataview-content {
+	background-color: $primaryColor;
+}
+.list-cards .product-list-item {
+	background-color: $whiteColor;
+	border-radius: $borderRadius;
+}
+
+.p-selectbutton .p-button {
+	background-color: $primaryAltColor;
+	color: $whiteColor;
+	border: none;
+}
+.p-selectbutton .p-button.p-highlight {
+	background-color: $whiteColor;
+	color: $gray700Color;
+}
+.p-selectbutton .p-button.p-highlight:hover {
+	background-color: $primaryAltColor;
+	color: $whiteColor;
+	border: none;
+}
+.p-selectbutton .p-button,
+.p-dataview .p-dataview-header,
+.p-dataview.p-dataview-list .p-dataview-content > .p-grid > div {
+	border: none;
+}
+
+.pi {
+	font-size: inherit;
+}
+
+.p-tooltip .p-tooltip-text {
+	background-color: $gray500Color;
+	color: $whiteColor;
+	width: max-content;
+}
+
+.p-tooltip.p-tooltip-top .p-tooltip-arrow {
+	border-top-color: $gray500Color;
+}
+
+.css-1qqynwt-MuiTypography-root {
+	font-family: $fontFamilyHeading !important;
+}
+
+.p-inputtext {
+	border: none;
+	padding: 0.85rem;
+}
+
+.p-dataview-emptymessage {
+	color: $gray800Color;
+	background-color: $gray200Color;
+	width: 100%;
+	padding: 1rem;
+	border-radius: $borderRadius;
+}

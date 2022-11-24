@@ -1,0 +1,16 @@
+.input {
+	font-family: $fontFamilyText;
+	font-size: $fontSize;
+	background-color: $secondColor;
+	border-radius: $borderRadius;
+	color: $whiteColor;
+	border: 0;
+	outline: none;
+	box-sizing: 0;
+	padding: 0.85rem;
+}
+
+.p-inputtext:enabled:focus {
+	-webkit-box-shadow: 0 0 0 0 transparent;
+	box-shadow: 0 0 0 0 transparent;
+}
