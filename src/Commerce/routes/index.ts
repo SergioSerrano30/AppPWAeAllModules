@@ -3,6 +3,7 @@ import BugReportIcon from '@mui/icons-material/BugReport';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import HomeIcon from '@mui/icons-material/Home';
 import TerrainIcon from '@mui/icons-material/Terrain';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 
 import asyncComponentLoader from '@/Commerce/utils/loader';
 
@@ -38,10 +39,16 @@ const routes: Routes = {
     path: '/page-4',
     title: 'Page 4',
     icon: BugReportIcon,
-  },
+  },  
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/Commerce/pages/general/NotFound')),
     path: '*',
+  },
+  [Pages.Carrito]: {
+    component: asyncComponentLoader(() => import('@/Commerce/pages/orders/Carrito/Carrito')),
+    path: '/carrito',
+    title: 'Carrito',
+    icon: LocalGroceryStoreIcon,
   },
 };
 
