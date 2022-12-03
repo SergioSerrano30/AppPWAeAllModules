@@ -19,8 +19,8 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { useTheme } from '@mui/material/styles';
 import { FullSizeCenteredFlexBox } from '@/Commerce/components/styled';
 import Imagen1 from '@/General/assets/img/live-from-space.jpg';
-import ProductoInfo from '../organisms/ProductoInfo';
-import Botones from '../organisms/Botones';
+import ProductoInfo from '../../organisms/ProductoInfo';
+import Botones from '../../organisms/Botones';
 function Producto() {
   const theme = useTheme();
   const ImgProd = styled('img')({
@@ -32,7 +32,7 @@ function Producto() {
   let urlImgProd = 'https://http2.mlstatic.com/D_NQ_NP_2X_701798-MLA43059089824_082020-V.webp';
   
   return (
-    <>
+    <> 
       <Paper
         sx={{
           p: 2,
