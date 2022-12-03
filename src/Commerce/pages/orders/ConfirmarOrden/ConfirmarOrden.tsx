@@ -21,9 +21,11 @@ import Imagen1 from '@/General/assets/img/live-from-space.jpg';
 import Producto from '@/Commerce/components/orders/molecules/Producto';
 import ProductoListaCarrito from '@/Commerce/components/orders/molecules/ProductoListaCarrito/ProductoListaCarrito';
 import CarruselPie from '@/Commerce/components/orders/organisms/CarruselPie/';
+import VentanaConfirmarCompra from '@/Commerce/components/orders/organisms/VentanaConfirmarCompra/';
 //import { Busqueda } from '@/Commerce/components/orders/organisms/Busqueda';
+import VentanaConfirmarCompraDomicilio from '../../../components/orders/molecules/VentanaConfirmarCompraDomicilio/VentanaConfirmarCompraDomicilio';
 
-function ListaCarrito() {
+function ConfirmarOrden() {
   const PEDIDOS = [
     {
       test: 'x',
@@ -39,18 +41,22 @@ function ListaCarrito() {
   return (
     <>
       <Meta title="listacarrito" />
-      <ListItem>
-        <ProductoListaCarrito />
-      </ListItem>
-      <ListItem>
-        <ProductoListaCarrito />
-      </ListItem>
-      <ListItem>
-        <ProductoListaCarrito />
-      </ListItem>
-      <ListItem>
-        <ProductoListaCarrito />
-      </ListItem>
+      <Grid item xs container direction="row" spacing={2}>
+        <Grid container direction="column">
+          <ListItem>
+            <VentanaConfirmarCompraDomicilio></VentanaConfirmarCompraDomicilio>
+          </ListItem>
+          <ListItem>
+            <VentanaConfirmarCompraDomicilio></VentanaConfirmarCompraDomicilio>
+          </ListItem>
+          <ListItem>
+            <VentanaConfirmarCompraDomicilio></VentanaConfirmarCompraDomicilio>
+          </ListItem>
+        </Grid>
+        <Grid>
+          sdcsdfsdfsdfs
+        </Grid>
+      </Grid>
 
       <br />
 
@@ -62,22 +68,9 @@ function ListaCarrito() {
             Continuar Compra
           </Button>
         </Grid>
-      </Grid> 
-      
-      <Grid paddingTop="100px">
-      <hr />
-        <ListItem>
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-        </ListItem>
       </Grid>
-       
-      
     </>
   );
 }
 
-export default ListaCarrito;
+export default ConfirmarOrden;
