@@ -45,7 +45,7 @@ const routes: Routes = {
     path: '*',
   },
   [Pages.Carrito]: {
-    component: asyncComponentLoader(() => import('@/Commerce/pages/orders/ConfirmarOrden/ConfirmarOrden')),
+    component: asyncComponentLoader(() => import('@/Commerce/pages/orders/Carrito/Carrito')),
     path: '/carrito',
     title: 'Carrito',
     icon: LocalGroceryStoreIcon,

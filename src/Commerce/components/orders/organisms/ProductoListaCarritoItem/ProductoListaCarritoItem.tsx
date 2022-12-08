@@ -38,7 +38,6 @@ function ProductoListaCarritoItem(){
         <Grid item xs  textAlign="center">
           <Button size="small" color="error" >Eliminar</Button>
           <Button size="small">Más Productos </Button>
-          <Button size="small">Comprar  este producto</Button>
         </Grid>
       </Grid>
 

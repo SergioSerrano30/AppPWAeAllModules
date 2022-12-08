@@ -26,8 +26,19 @@ function Carrito() {
       <Meta title="carrito" />
       {/* <Usuarios/> */}
       <ListItem>
+      <hr /><h2> COMPRAS:</h2><hr />
+      </ListItem>
+      <ListItem>
         <Producto />
       </ListItem>
+      <ListItem>
+        <Producto />
+      </ListItem>
+      <ListItem>
+        <Producto />
+      </ListItem>
+      
+      <hr /><h3>Prueba Obtener Datos</h3><hr />
         <Usuarios />
     </>
   );
