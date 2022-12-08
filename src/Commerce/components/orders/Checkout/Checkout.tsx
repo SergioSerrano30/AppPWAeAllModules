@@ -36,6 +36,7 @@ function Copyright() {
 
 const steps = ['Carrito','Entrega', 'Pago', 'Confirmación'];
 
+//asd
 function getStepContent(step: number) {
   switch (step) {
     case 0:

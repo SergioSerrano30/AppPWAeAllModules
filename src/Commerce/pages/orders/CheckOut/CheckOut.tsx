@@ -28,7 +28,7 @@ import AddressForm from '@/Commerce/components/orders/Checkout/AddressForm';
 //import { Busqueda } from '@/Commerce/components/orders/organisms/Busqueda';
 import VentanaConfirmarCompraDomicilio from '../../../components/orders/molecules/VentanaConfirmarCompraDomicilio/VentanaConfirmarCompraDomicilio';
 import Checkout from '../../../components/orders/Checkout/Checkout';
-
+//fg
 function funCheckOut() {
   const PEDIDOS = [
     {
