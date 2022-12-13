@@ -22,8 +22,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ListaCarrito from '../../../pages/orders/ListaCarrito/ListaCarrito';
 import Carrito from '../../../pages/orders/Carrito/Carrito';
 
-
-
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -37,7 +35,7 @@ function Copyright() {
   );
 }
 
-const steps = ['Carrito', 'Entrega', 'Pago', 'Confirmación'];
+const steps = ['Carrito','Entrega', 'Pago', 'Confirmación'];
 
 function getStepContent(step: number) {
   switch (step) {
@@ -54,8 +52,6 @@ function getStepContent(step: number) {
   }
 }
 
-
-
 const theme = createTheme();
 
 export default function Checkout() {
@@ -67,14 +63,14 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
   const cambiarVentana = () => {
-    return <Carrito></Carrito>;
+    return <Carrito></Carrito>
   };
-
 
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
@@ -92,13 +88,11 @@ export default function Checkout() {
               <Typography variant="h5" gutterBottom>
                 Gracias por tu compra.
               </Typography>
-              <Typography variant="subtitle1">Tu pedido fue Guardado exitosamente.</Typography>
-              <Button variant="contained" sx={{ mt: 3, ml: 14 }}>
-                Ver Pedido
-              </Button>
-              <Button variant="contained" sx={{ mt: 3, ml: 5 }}>
-                Mis Compras{' '}
-              </Button>
+              <Typography variant="subtitle1">
+                Tu pedido fue Guardado exitosamente. 
+              </Typography>
+              <Button  variant="contained"sx={{ mt: 3, ml: 14 }}>Ver Pedido</Button>
+              <Button  variant="contained"sx={{ mt: 3, ml: 5 }}>Mis Compras  </Button>
             </React.Fragment>
           ) : (
             <React.Fragment>
@@ -109,7 +103,11 @@ export default function Checkout() {
                     Regresar
                   </Button>
                 )}
-                <Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
+                <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  sx={{ mt: 3, ml: 1 }}
+                >
                   {activeStep === steps.length - 1 ? 'Confirmar' : 'Siguiente'}
                 </Button>
               </Box>

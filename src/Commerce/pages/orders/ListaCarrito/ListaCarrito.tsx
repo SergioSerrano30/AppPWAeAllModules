@@ -52,17 +52,6 @@ function ListaCarrito() {
           </Button>
         </Grid>
       </Grid> 
-      
-      <Grid paddingTop="100px">
-      <hr />
-        <ListItem>
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-        </ListItem>
-      </Grid>
        
       
     </>
