@@ -39,17 +39,37 @@ const routes: Routes = {
     path: '/page-4',
     title: 'Page 4',
     icon: BugReportIcon,
-  },  
+  },
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/Commerce/pages/general/NotFound')),
     path: '*',
   },
   [Pages.Carrito]: {
-    component: asyncComponentLoader(() => import('@/Commerce/pages/orders/ConfirmarOrden/ConfirmarOrden')),
+    component: asyncComponentLoader(() => import('@/Commerce/pages/orders/Carrito/Carrito')),
     path: '/carrito',
     title: 'Carrito',
     icon: LocalGroceryStoreIcon,
   },
+  // // ,
+  // [Pages.Carrito]: {
+  // component: asyncComponentLoader(() => import('@/Commerce/pages/orders/ListaCarrito/ListaCarrito')),
+  //   path: '/carrito',
+  //   title: 'Carrito',
+  //   icon: LocalGroceryStoreIcon,
+  // },
+  // ,
+  // [Pages.Carrito]: {
+  //   component: asyncComponentLoader(() => import('@/Commerce/pages/orders/ConfirmarOrden/ConfirmarOrden')),
+  //   path: '/carrito',
+  //   title: 'Carrito',
+  //   icon: LocalGroceryStoreIcon,
+  // },
+  // [Pages.Carrito]: {
+  //   component: asyncComponentLoader(() => import('@/Commerce/pages/orders/CheckOut/CheckOut')),
+  //   path: '/carrito',
+  //   title: 'Carrito',
+  //   icon: LocalGroceryStoreIcon,
+  // },
 };
 
 export default routes;

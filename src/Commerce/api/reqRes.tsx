@@ -1,4 +1,1 @@
-import axios from "axios";
-export const reqRespApi = axios.create({
-    baseURL: 'https://reqres.in/api'
-})
+export const baseURL = 'https://app-rest-e-all-modules.herokuapp.com/api/v1'

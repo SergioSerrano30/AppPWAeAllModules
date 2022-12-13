@@ -23,7 +23,10 @@ import {
   import ProductoInfo from '../../organisms/ProductoInfo';
   import Botones from '../../organisms/Botones';
   import ProductoListaCarritoItem from '../../organisms/ProductoListaCarritoItem/ProductoListaCarritoItem';
- 
+  import { useEffect, useState } from 'react';
+  import axios from 'axios';
+  import { baseURL } from '@/Commerce/api/reqRes';
+  const api = baseURL+"/commerce/ordenes"
   
 
   function ProductoListaCarrito() {
@@ -36,6 +39,20 @@ import {
     });
     let urlImgProd = 'https://http2.mlstatic.com/D_NQ_NP_2X_701798-MLA43059089824_082020-V.webp';
     
+    const [data, setData] = useState([]);
+    const peticionGet = async () => {
+      await axios.get(api)
+      .then((response) => {
+        //console.log(response.data);
+        setData(response.data);
+      });
+    };
+    
+    useEffect(() => {
+      peticionGet();
+    }, []);
+    
+
     return (
       <>
         <Paper

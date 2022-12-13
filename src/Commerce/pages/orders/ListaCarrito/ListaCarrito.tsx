@@ -22,58 +22,25 @@ import Producto from '@/Commerce/components/orders/molecules/Producto';
 import ProductoListaCarrito from '@/Commerce/components/orders/molecules/ProductoListaCarrito/ProductoListaCarrito';
 import CarruselPie from '@/Commerce/components/orders/organisms/CarruselPie/';
 //import { Busqueda } from '@/Commerce/components/orders/organisms/Busqueda';
+import Checkout from '../../../components/orders/Checkout/Checkout';
 
 function ListaCarrito() {
-  const PEDIDOS = [
-    {
-      test: 'x',
-      test2: 'x',
-    },
-    {
-      test: 'y',
-      test2: 'y',
-    },
-  ];
 
-  console.log(PEDIDOS);
   return (
     <>
       <Meta title="listacarrito" />
-      <ListItem>
+        <ProductoListaCarrito /><br />
         <ProductoListaCarrito />
-      </ListItem>
-      <ListItem>
-        <ProductoListaCarrito />
-      </ListItem>
-      <ListItem>
-        <ProductoListaCarrito />
-      </ListItem>
-      <ListItem>
-        <ProductoListaCarrito />
-      </ListItem>
-
       <br />
 
       <Grid container>
         <Grid item xs={7}></Grid>
         <Grid item xs={5}>
           <h3>Total con Envío: $9999</h3>
-          <Button variant="contained" size="large">
-            Continuar Compra
-          </Button>
-        </Grid>
+          </Grid>
       </Grid> 
       
-      <Grid paddingTop="100px">
-      <hr />
-        <ListItem>
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-          <CarruselPie />
-        </ListItem>
-      </Grid>
+      
        
       
     </>
