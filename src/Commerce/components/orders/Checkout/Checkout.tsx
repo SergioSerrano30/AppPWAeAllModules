@@ -20,7 +20,7 @@ import Iconos from '../organisms/Botones/Botones';
 import '@mui/icons-material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ListaCarrito from '../../../pages/orders/ListaCarrito/ListaCarrito';
-import Carrito from '../../../pages/orders/Carrito/Carrito';
+import Carrito from '../../../pages/orders/Compras/Compras';
 
 function Copyright() {
   return (

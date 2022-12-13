@@ -4,7 +4,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import HomeIcon from '@mui/icons-material/Home';
 import TerrainIcon from '@mui/icons-material/Terrain';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 import asyncComponentLoader from '@/Commerce/utils/loader';
 
 import { Pages, Routes } from './types';
@@ -44,12 +44,12 @@ const routes: Routes = {
     component: asyncComponentLoader(() => import('@/Commerce/pages/general/NotFound')),
     path: '*',
   },
-//   [Pages.Carrito]: {
-//     component: asyncComponentLoader(() => import('@/Commerce/pages/orders/Carrito/Carrito')),
-//     path: '/carrito',
-//     title: 'Carrito',
-//     icon: LocalGroceryStoreIcon,
-//   },
+  [Pages.Compras]: {
+    component: asyncComponentLoader(() => import('@/Commerce/pages/orders/Compras/Compras')),
+    path: '/mis-compras',
+    title: 'Mis compras',
+    icon: LocalMallIcon,
+  },
   // // ,
   // [Pages.Carrito]: {
   // component: asyncComponentLoader(() => import('@/Commerce/pages/orders/ListaCarrito/ListaCarrito')),
