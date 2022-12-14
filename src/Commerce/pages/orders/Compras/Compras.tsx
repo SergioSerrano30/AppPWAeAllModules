@@ -7,6 +7,10 @@ import {
   TextField,
   Button,
   ButtonBase,
+  Backdrop,
+  Fade,
+  Box,
+  Modal,
 } from '@mui/material';
 
 import { SearchOutlined } from '@mui/icons-material';
@@ -16,6 +20,9 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { baseURL } from '@/Commerce/api/reqRes';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+
+import { ReqRespOrdenesListado, OrdenesPresentaP } from '@/Commerce/interfaces/ORDENES/reqResp';
+
 const api = baseURL + '/commerce/ordenes/';
 
 const Carrito = () => {
@@ -45,26 +52,16 @@ const Carrito = () => {
     peticionGet();
   }, []);
 
-  // const peticionGetItem = (desc:any) => (
-  //   console.log("URL ------> "+api+"Des/"+desc)
-  //   // axios.get(api+"Des/"+desc)
-  //   // .then((response) => {
-  //   //   console.log(response.data);
-  //   //   setOrdenes({ ...ordenes, OrdenesData: response.data });
-  //   // });
-  // );
-
   const peticionGetItem = (desc: any) => {
-    if(desc.length>0){
+    if (desc.length > 0) {
       console.log('URL ------> ' + api + 'Des/' + desc);
       axios.get(api + 'Des/' + desc).then((response) => {
         console.log(response.data);
-        setOrdenes({ ...ordenes, OrdenesData: response.data });
+        setOrdenItem({ OrdenesData: response.data });
       });
-    }else{
+    } else {
       peticionGet();
     }
-
   };
 
   const [busqueda, setbusqueda] = useState({
@@ -79,9 +76,128 @@ const Carrito = () => {
     }));
   };
 
-  const test = (id:any) => (
-    console.log("---------->  "+id)
-  )
+  const keyPress = (e: any) => {
+    if (e.keyCode == 13) {
+      console.log('value', e.target.value);
+      peticionGetItem(busqueda.buscar);
+      // put the login here
+    }
+  };
+
+  function fechaBien(fecha: string) {
+    let fe = fecha.split('T');
+    //Fecha: {orden.detail_row.detail_row_reg[0].FechaReg}
+    return fe[0];
+  }
+
+  const test = (id: any) => {
+    console.log('---------->  ' + id);
+  };
+
+  const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 1000,
+    bgcolor: '#e3dfde',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+  const [open, setOpen] = useState(false);
+  const abrirCerrar = () => setOpen(!open);
+  const [ordenSeleccionada, setOrdenSeleccionada] = useState({
+    OrdenItemData: [],
+  });
+  const seleccionarOrden = (ord: [], caso: string) => {
+    setOrdenSeleccionada({ OrdenItemData: ord });
+    caso === 'Ver' ? abrirCerrar() : null;
+    // console.log(ordenSeleccionada.OrdenItemData.length);
+    //console.log(caso);
+  };
+  console.log(ordenSeleccionada.OrdenItemData.length);
+  const bodyVerCompra = (
+    <>
+      <Fade in={open}>
+        <Box sx={style}>
+          <Paper
+            sx={{
+              p: 2,
+              margin: 'auto',
+              width: 'auto',
+              maxWidth: 900,
+              backgroundColor: (theme) => (theme.palette.mode === 'dark' ? '#1A2027' : '#fff'),
+            }}
+          >
+            <Grid container mb={5}>
+              <Grid item xs={1} mt={12} ml={2}>
+                <ButtonBase sx={{ width: 70, height: 70 }}>
+                  <ImgProd alt="Imagen del producto" src={urlImgProd} />
+                </ButtonBase>
+              </Grid>
+
+              <Grid item xs={4} ml={5} mt={10}>
+                {ordenSeleccionada.OrdenItemData.length != 0 ? (
+                  <>
+                    {ordenSeleccionada.OrdenItemData.cat_ordenes_presenta_ps_estatus[0].Estatus ===
+                    'Entregado' ? (
+                      <>
+                        <Typography gutterBottom variant="h6" component="div" color="green">
+                          {
+                            ordenSeleccionada.OrdenItemData.cat_ordenes_presenta_ps_estatus[0]
+                              .Estatus
+                          }
+                          &nbsp;
+                          <CheckCircleIcon />
+                        </Typography>
+                      </>
+                    ) : (
+                      <Typography gutterBottom variant="h6" component="div" color="yellow">
+                        {ordenSeleccionada.OrdenItemData.cat_ordenes_presenta_ps_estatus[0].Estatus}
+                        &nbsp;
+                        <LocalShippingIcon />
+                      </Typography>
+                    )}
+                  </>
+                ) : null}
+
+                <Typography id="transition-modal-title" variant="h6" component="h2">
+                  Producto: {ordenSeleccionada.OrdenItemData.DesPresentaPS}
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  Cantidad: {ordenSeleccionada.OrdenItemData.Cantidad}
+                </Typography>
+              </Grid>
+              <Grid item xs={5} mr={2} ml={1} mt={1}>
+                <Typography gutterBottom variant="h6" component="div">
+                  Detalle de la compra
+                  <br />
+                  
+                </Typography>
+
+                <Typography gutterBottom variant="subtitle1" component="div">
+                  Producto(s): {ordenSeleccionada.OrdenItemData.Cantidad}
+                  <br />
+                  Precio unitario: ${ordenSeleccionada.OrdenItemData.PrecioUniConIVA}
+                  <br />
+                  <br />
+                  <hr />
+                  <br />
+                  Total: $
+                  {ordenSeleccionada.OrdenItemData.Cantidad *
+                    ordenSeleccionada.OrdenItemData.PrecioUniConIVA}
+                  <br />
+                  <br />
+                  <hr />
+                </Typography>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Box>
+      </Fade>
+    </>
+  );
 
   return (
     <>
@@ -117,6 +233,7 @@ const Carrito = () => {
                 variant="outlined"
                 label="Buscar"
                 onChange={handleChange}
+                onKeyDown={keyPress}
                 InputProps={{
                   endAdornment: (
                     <IconButton onClick={() => peticionGetItem(busqueda.buscar)}>
@@ -149,145 +266,97 @@ const Carrito = () => {
                           theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                       }}
                     >
-                      {orden.ordenes_presenta_ps.map((info: any) =>
-                        info.cat_ordenes_presenta_ps_estatus[0].Estatus === 'Entregado' ? (
-                          <>
-                            <Grid container mb={5}>
-                              <Grid item xs={1} mt={5} ml={2}>
-                                <ButtonBase sx={{ width: 70, height: 70 }}>
-                                  <ImgProd alt="Imagen del producto" src={urlImgProd} />
-                                </ButtonBase>
-                              </Grid>
-                              <Grid item xs={6} ml={4} mt={2}>
-                                <Typography gutterBottom variant="h6" component="div" color="green">
-                                  {info.cat_ordenes_presenta_ps_estatus[0].Estatus}
-                                  &nbsp;
-                                  <CheckCircleIcon color="success" />
-                                </Typography>
-
-                                <Typography gutterBottom variant="h6" component="div">
-                                  Producto: {info.DesPresentaPS}
-                                </Typography>
-                                <Typography gutterBottom variant="h6" component="div">
-                                  Cantidad: {info.Cantidad}
-                                </Typography>
-                                <Typography gutterBottom variant="h6" component="div">
-                                  Fecha de entrega: {info.ordenes_presenta_ps_info_ad[0].Valor}
-                                </Typography>
-                              </Grid>
-                              <Grid item xs={4} mr={2} mt={5}>
-                                <Grid
-                                  container
-                                  spacing={2}
-                                  direction="column"
-                                  justifyContent="flex-end"
-                                  alignItems="flex-end"
-                                >
-                                  <Grid item xs={6} md={8}>
-                                    <Button
-                                      variant="contained"
-                                      color="primary"
-                                      style={{
-                                        maxWidth: '200px',
-                                        maxHeight: '50px',
-                                        minWidth: '200px',
-                                        minHeight: '50px',
-                                      }}
-                                      onClick={() => test(orden.IdOrdenOK)}
-                                    >
-                                      Ver compra
-                                    </Button>
-                                  </Grid>
-                                  <Grid item xs={6} md={8}>
-                                    <Button
-                                      variant="contained"
-                                      color="secondary"
-                                      style={{
-                                        maxWidth: '200px',
-                                        maxHeight: '50px',
-                                        minWidth: '200px',
-                                        minHeight: '50px',
-                                      }}
-                                    >
-                                      Volver a comprar
-                                    </Button>
-                                  </Grid>
-                                </Grid>
-                              </Grid>
+                      <Grid item xs={12} ml={4} pt={2}>
+                        <Typography variant="h5" gutterBottom>
+                          {fechaBien(orden.detail_row.detail_row_reg[0].FechaReg)}
+                        </Typography>
+                      </Grid>
+                      {orden.ordenes_presenta_ps.map((info: any) => (
+                        <>
+                          <Grid container mb={5}>
+                            <Grid item xs={1} mt={5} ml={2}>
+                              <ButtonBase sx={{ width: 70, height: 70 }}>
+                                <ImgProd alt="Imagen del producto" src={urlImgProd} />
+                              </ButtonBase>
                             </Grid>
-                          </>
-                        ) : (
-                          <>
-                            <Grid container mb={5}>
-                              <Grid item xs={1} mt={5} ml={2}>
-                                <ButtonBase sx={{ width: 70, height: 70 }}>
-                                  <ImgProd alt="Imagen del producto" src={urlImgProd} />
-                                </ButtonBase>
-                              </Grid>
-                              <Grid item xs={6} ml={4} mt={2}>
+                            <Grid item xs={6} ml={4} mt={2}>
+                              {info.cat_ordenes_presenta_ps_estatus[0].Estatus === 'Entregado' ? (
+                                <>
+                                  <Typography
+                                    gutterBottom
+                                    variant="h6"
+                                    component="div"
+                                    color="green"
+                                  >
+                                    {info.cat_ordenes_presenta_ps_estatus[0].Estatus}
+                                    &nbsp;
+                                    <CheckCircleIcon />
+                                  </Typography>
+                                </>
+                              ) : (
                                 <Typography
                                   gutterBottom
                                   variant="h6"
                                   component="div"
-                                  color="#ffc107"
+                                  color="yellow"
                                 >
                                   {info.cat_ordenes_presenta_ps_estatus[0].Estatus}
                                   &nbsp;
                                   <LocalShippingIcon />
                                 </Typography>
-                                <Typography gutterBottom variant="h6" component="div">
-                                  Producto: {info.DesPresentaPS}
-                                </Typography>
-                                <Typography gutterBottom variant="h6" component="div">
-                                  Cantidad: {info.Cantidad}
-                                </Typography>
-                                <Typography gutterBottom variant="h6" component="div">
-                                  Fecha de entrega: {info.ordenes_presenta_ps_info_ad[0].Valor}
-                                </Typography>
-                              </Grid>
-                              <Grid item xs={4} mr={2} mt={5}>
-                                <Grid
-                                  container
-                                  spacing={2}
-                                  direction="column"
-                                  justifyContent="flex-end"
-                                  alignItems="flex-end"
-                                >
-                                  <Grid item xs={6} md={8}>
-                                    <Button
-                                      variant="contained"
-                                      color="primary"
-                                      style={{
-                                        maxWidth: '200px',
-                                        maxHeight: '50px',
-                                        minWidth: '200px',
-                                        minHeight: '50px',
-                                      }}
-                                      onClick={() => test(orden.IdOrdenOK)}
-                                    >
-                                      Ver compra
-                                    </Button>
-                                  </Grid>
-                                  <Grid item xs={6} md={8}>
-                                    <Button
-                                      variant="contained"
-                                      color="secondary"
-                                      style={{
-                                        maxWidth: '200px',
-                                        maxHeight: '50px',
-                                        minWidth: '200px',
-                                        minHeight: '50px',
-                                      }}
-                                    >
-                                      Volver a comprar
-                                    </Button>
-                                  </Grid>
+                              )}
+                              <Typography gutterBottom variant="h6" component="div">
+                                Producto: {info.DesPresentaPS}
+                              </Typography>
+                              <Typography gutterBottom variant="h6" component="div">
+                                Cantidad: {info.Cantidad}
+                              </Typography>
+                              <Typography gutterBottom variant="h6" component="div">
+                                Fecha de entrega: {info.ordenes_presenta_ps_info_ad[0].Valor}
+                              </Typography>
+                            </Grid>
+                            <Grid item xs={4} mr={2} mt={5}>
+                              <Grid
+                                container
+                                spacing={2}
+                                direction="column"
+                                justifyContent="flex-end"
+                                alignItems="flex-end"
+                              >
+                                <Grid item xs={6} md={8}>
+                                  <Button
+                                    variant="contained"
+                                    color="primary"
+                                    style={{
+                                      maxWidth: '200px',
+                                      maxHeight: '50px',
+                                      minWidth: '200px',
+                                      minHeight: '50px',
+                                    }}
+                                    onClick={() => seleccionarOrden(info, 'Ver')}
+                                  >
+                                    Ver compra
+                                  </Button>
+                                </Grid>
+                                <Grid item xs={6} md={8}>
+                                  <Button
+                                    variant="contained"
+                                    color="secondary"
+                                    style={{
+                                      maxWidth: '200px',
+                                      maxHeight: '50px',
+                                      minWidth: '200px',
+                                      minHeight: '50px',
+                                    }}
+                                  >
+                                    Volver a comprar
+                                  </Button>
                                 </Grid>
                               </Grid>
                             </Grid>
-                          </>
-                        ),
-                      )}
+                          </Grid>
+                        </>
+                      ))}
                     </Paper>
                   </Grid>
                 </>
@@ -295,6 +364,20 @@ const Carrito = () => {
           )}
         </Grid>
       </Paper>
+
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={abrirCerrar}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        {bodyVerCompra}
+      </Modal>
     </>
   );
 };
