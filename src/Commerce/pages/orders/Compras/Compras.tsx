@@ -57,7 +57,7 @@ const Carrito = () => {
       console.log('URL ------> ' + api + 'Des/' + desc);
       axios.get(api + 'Des/' + desc).then((response) => {
         console.log(response.data);
-        setOrdenItem({ OrdenesData: response.data });
+        setOrdenes({ OrdenesData: response.data });
       });
     } else {
       peticionGet();
@@ -116,7 +116,7 @@ const Carrito = () => {
     // console.log(ordenSeleccionada.OrdenItemData.length);
     //console.log(caso);
   };
-  console.log(ordenSeleccionada.OrdenItemData.length);
+  // console.log(ordenSeleccionada.OrdenItemData.length);
   const bodyVerCompra = (
     <>
       <Fade in={open}>
