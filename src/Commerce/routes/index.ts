@@ -50,26 +50,18 @@ const routes: Routes = {
     title: 'Mis compras',
     icon: LocalMallIcon,
   },
-  // // ,
-  // [Pages.Carrito]: {
-  // component: asyncComponentLoader(() => import('@/Commerce/pages/orders/ListaCarrito/ListaCarrito')),
-  //   path: '/carrito',
-  //   title: 'Carrito',
-  //   icon: LocalGroceryStoreIcon,
-  // },
-  // ,
-  // [Pages.Carrito]: {
-  //   component: asyncComponentLoader(() => import('@/Commerce/pages/orders/ConfirmarOrden/ConfirmarOrden')),
-  //   path: '/carrito',
-  //   title: 'Carrito',
-  //   icon: LocalGroceryStoreIcon,
-  // },
   [Pages.Carrito]: {
-    component: asyncComponentLoader(() => import('@/Commerce/pages/orders/CheckOut/CheckOut')),
+    component: asyncComponentLoader(() => import('@/Commerce/pages/orders/ListaCarrito/ListaCarrito')),
     path: '/carrito',
     title: 'Carrito',
     icon: LocalGroceryStoreIcon,
   },
+  // [Pages.Carrito]: {
+  //   component: asyncComponentLoader(() => import('@/Commerce/components/orders/Checkout/Checkout')),
+  //   path: '/carrito',
+  //   title: 'Carrito',
+  //   icon: LocalGroceryStoreIcon,
+  // },
 };
 
 export default routes;

@@ -22,19 +22,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ListaCarrito from '../../../pages/orders/ListaCarrito/ListaCarrito';
 import Carrito from '../../../pages/orders/Compras/Compras';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Instituto Tecnológico de Tepic
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const steps = ['Carrito','Entrega', 'Pago', 'Confirmación'];
 
 function getStepContent(step: number) {
@@ -55,6 +42,7 @@ function getStepContent(step: number) {
 const theme = createTheme();
 
 export default function Checkout() {
+
   const [activeStep, setActiveStep] = React.useState(0);
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -67,11 +55,12 @@ export default function Checkout() {
   };
 
 
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
             Verificacion de Compra
@@ -88,11 +77,10 @@ export default function Checkout() {
               <Typography variant="h5" gutterBottom>
                 Gracias por tu compra.
               </Typography>
-              <Typography variant="subtitle1">
+              {/* <Typography variant="subtitle1">
                 Tu pedido fue Guardado exitosamente. 
-              </Typography>
-              <Button  variant="contained"sx={{ mt: 3, ml: 14 }}>Ver Pedido</Button>
-              <Button  variant="contained"sx={{ mt: 3, ml: 5 }}>Mis Compras  </Button>
+              </Typography> */}
+              <Button  variant="contained"sx={{ mt: 3, ml: 5 }} href='http://localhost:3051/mis-compras'>Mis Compras  </Button>
             </React.Fragment>
           ) : (
             <React.Fragment>

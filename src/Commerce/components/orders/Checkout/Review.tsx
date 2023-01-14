@@ -4,81 +4,88 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
-
-const products = [
-  {
-    name: 'Alexa Dot 3',
-    desc: 'Alexa Blanco Generacion 3 Asistente virtual',
-    price: '$599',
-  },
-  {
-    name: 'Xbox Series S',
-    desc: 'xbox Series S Blanco Control Incluido Xbox Game Pass 3 meses',
-    price: '$5,999',
-  },
-  {
-    name: 'Poco M3',
-    desc: 'Poco M3 Amarillo 128 GB 6 RAM 12MP',
-    price: '$3,999',
-  },
-
-  { name: 'Compra #69-666', desc: '', price: 'Gratis' },
-];
-const addresses = ['Reforma', '#14', 'Lomas Altas', 'Nayarit', 'Mexico'];
-const payments = [
-  { name: 'Tarjeta', detail: 'Visa' },
-  { name: 'Nombre', detail: 'Carlos  Zambrano ' },
-  { name: 'Numero', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expira', detail: '04/2024' },
-];
+import { baseURL } from '@/Commerce/api/reqRes';
+import { useEffect, useState } from 'react';
+import { ReqRespOrdenesListado, OrdenesPresentaP } from '@/Commerce/interfaces/ORDENES/reqResp';
+import axios from 'axios';
+const api = baseURL + '/commerce/ordenes/';
 
 export default function Review() {
+  const [ordenes, setOrdenes] = useState([]);
+  const peticionGet = () => {
+    axios.get(api).then((response) => {
+      console.log(response.data);
+      setOrdenes(response.data);
+    });
+  };
+  useEffect(() => {
+    peticionGet();
+  }, []);
+  let total = 0;
+  function precioCantidad(cantidad: number, precio: number) {
+    total += cantidad * precio;
+    return 'Cantidad: ' + cantidad + '    x    $' + precio;
+  }
+  function agregaEnvio(envio: number) {
+    total += envio;
+  }
+  var minimoEnvioGratis = 300;
+  const seleccionarOrden = async (ord: ReqRespOrdenesListado[], tipo: string) => {
+    if (tipo === 'comprar') {
+      //ord.cat_ordenes_estatus[0].Estatus = "Compra";
+      let productos = ord.ordenes_presenta_ps
+      console.log(productos)
+    }
+    console.log('>>URL: ' + api + ord._id);
+    //await peticionPut(ord);
+  };
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Lista de Productos
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
-        ))}
+        {ordenes.map((orden: ReqRespOrdenesListado) =>
+          orden.cat_ordenes_estatus[0].Estatus === 'Carrito' ? (
+            <>
+              {orden.ordenes_presenta_ps.map((product: OrdenesPresentaP) =>
+                product.detail_row.Borrado == 'N' ? (
+                  <>
+                    {product.SubTotalConIVA * product.Cantidad >= minimoEnvioGratis
+                      ? agregaEnvio(0)
+                      : agregaEnvio(99)}
+                    <ListItem key={product.DesPresentaPS} sx={{ py: 1, px: 0 }}>
+                      <ListItemText
+                        primary={product.DesPresentaPS}
+                        secondary={precioCantidad(product.Cantidad, product.PrecioUniConIVA)}
+                      />
+                      <Typography variant="body2" color="text.secondary" mr={2}>
+                        Envio:{' '}
+                        {product.SubTotalConIVA * product.Cantidad >= minimoEnvioGratis
+                          ? 'Gratis'
+                          : '$99'}
+                      </Typography>
+
+                      <Typography variant="body2">${product.SubTotalConIVA}</Typography>
+                    </ListItem>
+                  </>
+                ) : null,
+              )}
+            </>
+          ) : null,
+        )}
         <hr />
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $10,597
+            ${total}
           </Typography>
         </ListItem>
       </List>
       <hr />
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={5}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Compra
-          </Typography>
-          <Typography gutterBottom>Carlos Zambrano</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
-        </Grid>
-        <Grid item container direction="column" xs={12} sm={7}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Detalles de Pago
-          </Typography>
-          <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid>
-        </Grid>
+        <Grid item xs={12} sm={5}></Grid>
+        <Grid item container direction="column" xs={12} sm={7}></Grid>
       </Grid>
     </React.Fragment>
   );

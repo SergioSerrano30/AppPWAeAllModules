@@ -16,7 +16,7 @@ export interface ReqRespOrdenesListado {
 
 export interface CatOrdenesSEstatus {
     detail_row:  DetailRow;
-    _id:         string;
+    _id?:         string;
     IdEstatusOK: string;
     Estatus:     string;
     Actual:      Act;
@@ -39,15 +39,12 @@ export enum Borrado {
 
 export interface DetailRowReg {
     FechaReg:   string;
-    UsuarioReg: UsuarioReg;
+    UsuarioReg: string;
 }
 
-export enum UsuarioReg {
-    Fibarrac = "FIBARRAC",
-}
 
 export interface OrdenesFormaPago {
-    _id:             string;
+    _id?:             string;
     IdTipoPagoOk:    string;
     TipoPago:        string;
     MontoPagado:     number;
@@ -70,7 +67,7 @@ export interface OrdenesSInfoAd {
 
 export interface OrdenesPresentaP {
     detail_row:                      DetailRow;
-    _id:                             string;
+    _id?:                             string;
     IdProdServOK:                    string;
     IdPresentaPSBK:                  string;
     DesPresentaPS:                   string;
