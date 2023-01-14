@@ -12,7 +12,7 @@ cd AppPWAeAllModules
 
 =======================================================
                     IMPORTANTE
-=======================================================
+
 
 -Crea un archivo llamado .env dentro de la raiz del proyecto
 -Copia y pega dentro del archivo lo siguiente
